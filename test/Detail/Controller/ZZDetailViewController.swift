@@ -11,6 +11,7 @@ import YogaKit
 import SwiftyJSON
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 
 private let cellID = "ZZDetailCell"
 
@@ -40,8 +41,12 @@ class ZZDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui()
-        
+        SVProgressHUD.show()
         model.network.observeOn(MainScheduler.instance).subscribe {[weak self] model in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                SVProgressHUD.dismiss()
+            }
+            
             ZZLog(model)
             guard let sf = self else {return}
             if let _model = model.data {
@@ -91,7 +96,6 @@ class ZZDetailViewController: UIViewController {
         
         self.footView.yoga.markDirty()
         self.footView.setNeedsLayout()
-        
         
         tableView.mutate { t in
             t.separatorStyle = .none
