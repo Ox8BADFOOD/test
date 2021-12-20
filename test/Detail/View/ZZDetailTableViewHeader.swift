@@ -36,7 +36,7 @@ class ZZDetailTableViewHeader: UIView {
 
     lazy var carNameLabel: UILabel = {
         let l = UILabel()
-        l.text = "Toyota Wish(2018)"
+        l.text = " "
         l.numberOfLines = 0
         l.font = Title2Font
         l.textColor = textColorHeavy
@@ -50,7 +50,7 @@ class ZZDetailTableViewHeader: UIView {
     
     lazy var carNoLable: UILabel = {
         let l = UILabel()
-        l.text = "SML123J"
+        l.text = " "
         l.font = Title3Font
         l.textColor = textColorNormal
         l.textAlignment = .center
@@ -70,7 +70,7 @@ class ZZDetailTableViewHeader: UIView {
     
     lazy var leftDayLabel: UILabel = {
         let l = UILabel()
-        l.text = "14 day left"
+        l.text = " "
         l.font = DetailFont
         l.textColor = textColorNormal
         l.ZZYogaLayout {
@@ -83,10 +83,6 @@ class ZZDetailTableViewHeader: UIView {
     lazy var progress: UIProgressView = {
         let p = UIProgressView()
         p.setProgress(0, animated: false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            p.setProgress(0.5, animated: true)
-        }
-        
         p.progressTintColor = progressFillColor
         p.trackTintColor = progressTrackColor
         p.ZZYogaLayout {
@@ -119,7 +115,12 @@ class ZZDetailTableViewHeader: UIView {
         addSubview(progressWrapper)
         addSubview(infoView)
         
-        root.yoga.applyLayout(preservingOrigin: true)
+        root.yoga.applyLayout(preservingOrigin: false)
+    }
+    
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            root.yoga.applyLayout(preservingOrigin: true)
     }
     
     required init?(coder: NSCoder) {

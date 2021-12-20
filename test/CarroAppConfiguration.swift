@@ -35,7 +35,8 @@ extension ZZAppConfiguration: ZZAppConfig  {
     }
     
     var mainColor: UIColor{
-        textColorNormal!
+//        textColorNormal!
+        .red
     }
     
 

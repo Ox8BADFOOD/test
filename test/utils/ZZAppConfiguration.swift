@@ -148,8 +148,6 @@ extension ZZAppConfiguration{
         do {
             try UIView.aspect_hook(#selector(UIView.init(frame:)), with: AspectOptions.init(rawValue: 0), usingBlock: viewObject)
             try UIView.aspect_hook(#selector(UIView.init(coder:)), with: AspectOptions.init(rawValue: 0), usingBlock: viewObject)
-            try UIView.aspect_hook(#selector(UIView.awakeFromNib), with: AspectOptions.init(rawValue: 0), usingBlock: viewObject)
-
         } catch {
             print(error)
         }

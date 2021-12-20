@@ -34,9 +34,8 @@ class ZZMngSubscriptionItemView:UIView{
             $0.isEnabled = true
             $0.justifyContent = .center
             $0.alignItems = .center
-//            $0.width = YGValue(70)
-            $0.flex = 1
             $0.aspectRatio = 100.0/85.0
+            $0.width = 80
         }
         
         imgView.configureLayout {
@@ -66,6 +65,7 @@ public class ZZMngSubscriptionView: UIView {
         ("pay","Payments",zz_RGBHex(0x517EC6)!),
         ("cancel","Cancel Sub",zz_RGBHex(0xEB6060)!),
     ]
+    var itemArr: [ZZMngSubscriptionItemView] = []
     lazy var itemsWrapperView = UIView()
     lazy var titleLabel: UILabel = {
         let l = UILabel()
@@ -98,7 +98,7 @@ public class ZZMngSubscriptionView: UIView {
         
         var index:Int = 0
 
-        items.compactMap { (imgName, text, bgcHex) -> ZZMngSubscriptionItemView? in
+        itemArr = items.compactMap { (imgName, text, bgcHex) -> ZZMngSubscriptionItemView? in
             guard let img = UIImage(named: imgName) else {return nil}
             let h = ZZMngSubscriptionItemView(img:img , text: text, color: bgcHex)
             if index != (items.count - 1){

@@ -24,8 +24,7 @@ class ZZDetailTableViewFooter: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        root.configureLayout {
-            $0.isEnabled = true
+        root.ZZYogaLayout {
             $0.alignItems = .stretch
             $0.paddingTop = YGValue(25)
         }
@@ -43,6 +42,12 @@ class ZZDetailTableViewFooter: UIView {
         }
         root.addSubview(enhanceSubscription)
         
+        root.yoga.applyLayout(preservingOrigin: true)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        root.yoga.markDirty()
         root.yoga.applyLayout(preservingOrigin: true)
     }
     

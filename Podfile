@@ -11,9 +11,10 @@ target 'test' do
    pod 'RxCocoa'
    pod 'Moya'
    pod 'Moya/RxSwift'
-   pod 'Moya-ObjectMapper/RxSwift'
+   pod 'SwiftyJSON'
+   pod 'DateToolsSwift'
   # Pods for test
-
+  pod 'SVProgressHUD'
   target 'testTests' do
     inherit! :search_paths
     # Pods for testing
