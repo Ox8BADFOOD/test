@@ -11,7 +11,7 @@ target 'test' do
    pod 'RxCocoa'
    pod 'Moya'
    pod 'Moya/RxSwift'
-   pod 'Moya-ObjectMapper/RxSwift'
+   pod 'SwiftyJSON'
   # Pods for test
 
   target 'testTests' do

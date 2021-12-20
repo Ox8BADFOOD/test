@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		37B849D5785C499B51A4F201 /* Pods_testTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A746651F698BD823CC6C5D /* Pods_testTests.framework */; };
+		5090F06A276FA4A6001C89B6 /* ZZDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F069276FA4A6001C89B6 /* ZZDetailModel.swift */; };
+		5090F06C276FA4E0001C89B6 /* ZZDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F06B276FA4E0001C89B6 /* ZZDetailNetworkService.swift */; };
+		5090F06E276FA63A001C89B6 /* ZZMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F06D276FA63A001C89B6 /* ZZMoya.swift */; };
 		50A915B1276F827B00C4EF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B0276F827B00C4EF61 /* AppDelegate.swift */; };
 		50A915B3276F827B00C4EF61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B2276F827B00C4EF61 /* SceneDelegate.swift */; };
 		50A915B5276F827B00C4EF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B4276F827B00C4EF61 /* ViewController.swift */; };
@@ -41,6 +44,9 @@
 		50A9161B276F88B400C4EF61 /* CarroFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9161A276F88B400C4EF61 /* CarroFont.swift */; };
 		50A9161D276F88C700C4EF61 /* CarroColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9161C276F88C700C4EF61 /* CarroColor.swift */; };
 		50A9161F276F88E500C4EF61 /* CarroAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A9161E276F88E500C4EF61 /* CarroAppConfiguration.swift */; };
+		50C44D9427701F9700C211BA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9327701F9700C211BA /* ApiError.swift */; };
+		50C44D9627702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9527702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift */; };
+		50C44D9A27705CD900C211BA /* ZZLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9927705CD900C211BA /* ZZLog.swift */; };
 		76925AFA502070BF65EC012A /* Pods_test_testUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC4C63E316D172A4388E26 /* Pods_test_testUITests.framework */; };
 		88C50496B2A26237981BA0F7 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FF0C293761EA3CBC54A771 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +73,9 @@
 		19FF0C293761EA3CBC54A771 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249A0405DAD2836B5332989A /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
 		4BC7AB068472AB0896C181F0 /* Pods-testTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testTests.debug.xcconfig"; path = "Target Support Files/Pods-testTests/Pods-testTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5090F069276FA4A6001C89B6 /* ZZDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZDetailModel.swift; sourceTree = "<group>"; };
+		5090F06B276FA4E0001C89B6 /* ZZDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZDetailNetworkService.swift; sourceTree = "<group>"; };
+		5090F06D276FA63A001C89B6 /* ZZMoya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZMoya.swift; sourceTree = "<group>"; };
 		50A915AD276F827B00C4EF61 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A915B0276F827B00C4EF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50A915B2276F827B00C4EF61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +119,9 @@
 		50A9161C276F88C700C4EF61 /* CarroColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarroColor.swift; sourceTree = "<group>"; };
 		50A9161E276F88E500C4EF61 /* CarroAppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarroAppConfiguration.swift; sourceTree = "<group>"; };
 		50A91626276F8A3000C4EF61 /* test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "test-Bridging-Header.h"; sourceTree = "<group>"; };
+		50C44D9327701F9700C211BA /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		50C44D9527702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+ConnectivityError.swift"; sourceTree = "<group>"; };
+		50C44D9927705CD900C211BA /* ZZLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZLog.swift; sourceTree = "<group>"; };
 		68BC4C63E316D172A4388E26 /* Pods_test_testUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_testUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A746651F698BD823CC6C5D /* Pods_testTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F89B741169C59F5A021221E /* Pods-test-testUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-testUITests.release.xcconfig"; path = "Target Support Files/Pods-test-testUITests/Pods-test-testUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +203,7 @@
 				50A9161A276F88B400C4EF61 /* CarroFont.swift */,
 				50A9161C276F88C700C4EF61 /* CarroColor.swift */,
 				50A9161E276F88E500C4EF61 /* CarroAppConfiguration.swift */,
+				50C44D9527702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift */,
 				50A915B6276F827B00C4EF61 /* Main.storyboard */,
 				50A915B9276F827C00C4EF61 /* Assets.xcassets */,
 				50A915BB276F827C00C4EF61 /* LaunchScreen.storyboard */,
@@ -232,6 +245,7 @@
 		50A915E3276F837700C4EF61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5090F069276FA4A6001C89B6 /* ZZDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +274,7 @@
 		50A915E6276F839800C4EF61 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5090F06B276FA4E0001C89B6 /* ZZDetailNetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -267,6 +282,7 @@
 		50A915E9276F85BD00C4EF61 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				50C44D9227701F8700C211BA /* Errors */,
 				50A915EA276F85BD00C4EF61 /* ZZFont.h */,
 				50A915EB276F85BD00C4EF61 /* ZZRoot.swift */,
 				50A915EC276F85BD00C4EF61 /* ZZMagicalDoor.h */,
@@ -284,6 +300,8 @@
 				50A915F8276F85BE00C4EF61 /* ZZDisposeBag.swift */,
 				50A915F9276F85BE00C4EF61 /* UIView+ZZFrame.h */,
 				50A915FA276F85BE00C4EF61 /* ZZColor.m */,
+				5090F06D276FA63A001C89B6 /* ZZMoya.swift */,
+				50C44D9927705CD900C211BA /* ZZLog.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -295,6 +313,14 @@
 				50A91617276F87BE00C4EF61 /* ZZDetailTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		50C44D9227701F8700C211BA /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				50C44D9327701F9700C211BA /* ApiError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		55643A120867A94F18367615 /* Frameworks */ = {
@@ -566,12 +592,18 @@
 				50A91604276F85BE00C4EF61 /* ZZAppConfiguration.swift in Sources */,
 				50A91614276F876600C4EF61 /* ZZMngSubscriptionView.swift in Sources */,
 				50A91612276F873D00C4EF61 /* ZZEnhanceSubscriptionView.swift in Sources */,
+				50C44D9427701F9700C211BA /* ApiError.swift in Sources */,
+				5090F06C276FA4E0001C89B6 /* ZZDetailNetworkService.swift in Sources */,
 				50A91605276F85BE00C4EF61 /* ZZDisposeBag.swift in Sources */,
 				50A91602276F85BE00C4EF61 /* ZZSingleton.swift in Sources */,
 				50A915B3276F827B00C4EF61 /* SceneDelegate.swift in Sources */,
+				50C44D9A27705CD900C211BA /* ZZLog.swift in Sources */,
 				50A915FE276F85BE00C4EF61 /* ZZAspect.swift in Sources */,
+				5090F06E276FA63A001C89B6 /* ZZMoya.swift in Sources */,
+				5090F06A276FA4A6001C89B6 /* ZZDetailModel.swift in Sources */,
 				50A9161F276F88E500C4EF61 /* CarroAppConfiguration.swift in Sources */,
 				50A9161B276F88B400C4EF61 /* CarroFont.swift in Sources */,
+				50C44D9627702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift in Sources */,
 				50A9160E276F868500C4EF61 /* ZZDetailTableViewHeader.swift in Sources */,
 				50A915FB276F85BE00C4EF61 /* ZZRoot.swift in Sources */,
 				50A915E8276F83DF00C4EF61 /* ZZDetailViewController.swift in Sources */,

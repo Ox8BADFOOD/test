@@ -3,25 +3,18 @@ PODS:
   - Aspects (1.4.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
-  - Moya-ObjectMapper/Core (2.9):
-    - Moya (~> 14.0.0-beta.6)
-    - ObjectMapper
-  - Moya-ObjectMapper/RxSwift (2.9):
-    - Moya-ObjectMapper/Core
-    - Moya/RxSwift
-    - RxSwift
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
-  - ObjectMapper (4.2.0)
   - RxCocoa (5.1.3):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.1.3):
     - RxSwift (~> 5)
   - RxSwift (5.1.3)
+  - SwiftyJSON (5.0.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -29,10 +22,10 @@ PODS:
 DEPENDENCIES:
   - Aspects
   - Moya
-  - Moya-ObjectMapper/RxSwift
   - Moya/RxSwift
   - RxCocoa
   - RxSwift
+  - SwiftyJSON
   - YogaKit (~> 1.7)
 
 SPEC REPOS:
@@ -40,11 +33,10 @@ SPEC REPOS:
     - Alamofire
     - Aspects
     - Moya
-    - Moya-ObjectMapper
-    - ObjectMapper
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftyJSON
     - Yoga
     - YogaKit
 
@@ -52,14 +44,13 @@ SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
-  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
   RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 44122b2a901ab99f1d60231646d04e75be035637
+PODFILE CHECKSUM: 4fa984fa0908a96317a42a3bafa6bf0644b25604
 
 COCOAPODS: 1.11.2
