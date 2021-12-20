@@ -29,4 +29,9 @@ class ZZDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        
+    }
+    
 }

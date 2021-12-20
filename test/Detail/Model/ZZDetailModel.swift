@@ -5,11 +5,13 @@
 
 import Foundation
 import RxSwift
+import DateToolsSwift
+import Moya
 
 // MARK: - ZZDetailModel
 class ZZDetailModel: Codable {
-    let data: ZZDetailData
-    let success: ZZDetailSuccess
+    let data: ZZDetailData?
+    let success: ZZDetailSuccess?
 
     enum CodingKeys: String, CodingKey {
         case data = "data"
@@ -27,26 +29,44 @@ class ZZDetailModel: Codable {
 class ZZDetailData: Codable {
     let drivers: [ZZDetailDriver]
     let nextBillingDate: Int
-    let basePrice: JSONNull?
+    let basePrice: String?
     let carplateNumber: String
     let endTime: Int
-    let updatedAt: Int
+    let updatedAt: Int?
+    var updatedAtString: String{
+        let value = Double(updatedAt ?? 0)
+        let date = Date.init(timeIntervalSince1970: value)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let timeStr = formatter.string(from: date)
+        
+        return "last updated: " + timeStr
+    }
     let insuranceExcess: Int
     let help: [ZZDetailHelp]
     let drivenThisMonth: Int
     let totalPerkmRate: String
-    let earliestPaymentDueDate: JSONNull?
-    let totalOutstandingFineCount: JSONNull?
-    let usageDueThisMonth: Int
+    let earliestPaymentDueDate: String?
+    let totalOutstandingFineCount: String?
+    let usageDueThisMonth: Int?
     let price: String
     let model: String
     let id: Int
     let make: String
     let startTime: Int
+    var startDate: Date{
+        let value = Double(updatedAt ?? 0)
+        let date = Date.init(timeIntervalSince1970: value)
+        return date
+    }
+    var totalDays :Int{
+        let day =  Date().chunkBetween(date: startDate).days
+       return day + (daysLeft ?? 0)
+    }
     let hasSubscribedInsurance: Bool
-    let daysLeft: JSONNull?
-    let mileage: JSONNull?
-    let totalOutstandingFineAmount: JSONNull?
+    let daysLeft: Int?
+    let mileage: Int?
+    let totalOutstandingFineAmount: String?
     let records: [ZZDetailRecord]
     let roadTax: Int
     let type: String
@@ -79,7 +99,7 @@ class ZZDetailData: Codable {
         case type = "type"
     }
 
-    init(drivers: [ZZDetailDriver], nextBillingDate: Int, basePrice: JSONNull?, carplateNumber: String, endTime: Int, updatedAt: Int, insuranceExcess: Int, help: [ZZDetailHelp], drivenThisMonth: Int, totalPerkmRate: String, earliestPaymentDueDate: JSONNull?, totalOutstandingFineCount: JSONNull?, usageDueThisMonth: Int, price: String, model: String, id: Int, make: String, startTime: Int, hasSubscribedInsurance: Bool, daysLeft: JSONNull?, mileage: JSONNull?, totalOutstandingFineAmount: JSONNull?, records: [ZZDetailRecord], roadTax: Int, type: String) {
+    init(drivers: [ZZDetailDriver], nextBillingDate: Int, basePrice: String?, carplateNumber: String, endTime: Int, updatedAt: Int?, insuranceExcess: Int, help: [ZZDetailHelp], drivenThisMonth: Int, totalPerkmRate: String, earliestPaymentDueDate: String?, totalOutstandingFineCount: String?, usageDueThisMonth: Int, price: String, model: String, id: Int, make: String, startTime: Int, hasSubscribedInsurance: Bool, daysLeft: Int?, mileage: Int?, totalOutstandingFineAmount: String?, records: [ZZDetailRecord], roadTax: Int, type: String) {
         self.drivers = drivers
         self.nextBillingDate = nextBillingDate
         self.basePrice = basePrice
@@ -226,15 +246,38 @@ class JSONNull: Codable, Hashable {
 
 
 public class ZZDetailControllerModel {
-    
-    var network: Single<Any>!
-    
-    init() {
+    var network: Single<ZZDetailModel>!
+    let country: Country!
+    var singaporeTuple = [("Base Price",""),("Road Tax",""),("Usage Based Insurance",""),("Named Drivers",""),("Insurance Excess","")]
+    // 删除 usage based insurance/ name drives
+    // Add "Total Fines" information
+    // Add "Total Fines Amount" information
+    var thailandTuple = [("Base Price",""),("Road Tax",""),("Total Fines",""),("Total Fines Amount",""),("Insurance Excess","")]
+    var tableTupleArr :[(String, String)]{
+        return country == .Singapore ? singaporeTuple : thailandTuple
+    }
+    init(country: Country) {
+        self.country = country
         network = subscriptionProvider.rx.request(.information).catchConnectivityError().flatMap({ resp in
                 if resp.statusCode == 200,
                    let root = try? JSONDecoder().decode(ZZDetailModel.self, from: resp.data){
-                    return Single.create { single in
-                        single(.success(root.data))
+                    return Single.create {[weak self] single in
+                        single(.success(root))
+                        self?.singaporeTuple[0].1 = "$ " + (root.data?.basePrice ?? "0").moneyOfficialSpell() + " / month"
+                        self?.singaporeTuple[1].1 = "$ " + "\(root.data?.roadTax ?? 0)".moneyOfficialSpell()
+                        self?.singaporeTuple[4].1 = "$ " + "\(root.data?.insuranceExcess ?? 0)".moneyOfficialSpell()
+                        
+                        self?.thailandTuple[0].1 = "$ " + (root.data?.basePrice ?? "0").moneyOfficialSpell() + " / month"
+                        self?.thailandTuple[1].1 = "$ " + "\(root.data?.roadTax ?? 0)".moneyOfficialSpell()
+                        self?.thailandTuple[4].1 = "$ " + "\(root.data?.insuranceExcess ?? 0)".moneyOfficialSpell()
+                        
+                        if (country == .Singapore){
+                            self?.singaporeTuple[2].1 = "$ 0.00 / km"
+                            self?.singaporeTuple[3].1 = root.data?.drivers.map({$0.name}).joined(separator: "\n") ?? ""
+                        } else {
+                            self?.thailandTuple[2].1 = "$ " + (root.data?.totalOutstandingFineCount ?? "0").moneyOfficialSpell()
+                            self?.thailandTuple[3].1 = "$ " + (root.data?.totalOutstandingFineAmount ?? "0").moneyOfficialSpell()
+                        }
                         return Disposables.create()
                     }
                 }

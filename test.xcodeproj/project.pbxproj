@@ -11,6 +11,8 @@
 		5090F06A276FA4A6001C89B6 /* ZZDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F069276FA4A6001C89B6 /* ZZDetailModel.swift */; };
 		5090F06C276FA4E0001C89B6 /* ZZDetailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F06B276FA4E0001C89B6 /* ZZDetailNetworkService.swift */; };
 		5090F06E276FA63A001C89B6 /* ZZMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090F06D276FA63A001C89B6 /* ZZMoya.swift */; };
+		50A02DD52770D08D00895E7D /* String+Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A02DD42770D08D00895E7D /* String+Price.swift */; };
+		50A02DD72770DEFB00895E7D /* testString+Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A02DD62770DEFB00895E7D /* testString+Price.swift */; };
 		50A915B1276F827B00C4EF61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B0276F827B00C4EF61 /* AppDelegate.swift */; };
 		50A915B3276F827B00C4EF61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B2276F827B00C4EF61 /* SceneDelegate.swift */; };
 		50A915B5276F827B00C4EF61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A915B4276F827B00C4EF61 /* ViewController.swift */; };
@@ -47,6 +49,7 @@
 		50C44D9427701F9700C211BA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9327701F9700C211BA /* ApiError.swift */; };
 		50C44D9627702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9527702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift */; };
 		50C44D9A27705CD900C211BA /* ZZLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9927705CD900C211BA /* ZZLog.swift */; };
+		50C44D9C27707D9A00C211BA /* ZZDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C44D9B27707D9A00C211BA /* ZZDetailCell.swift */; };
 		76925AFA502070BF65EC012A /* Pods_test_testUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC4C63E316D172A4388E26 /* Pods_test_testUITests.framework */; };
 		88C50496B2A26237981BA0F7 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FF0C293761EA3CBC54A771 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +79,8 @@
 		5090F069276FA4A6001C89B6 /* ZZDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZDetailModel.swift; sourceTree = "<group>"; };
 		5090F06B276FA4E0001C89B6 /* ZZDetailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZDetailNetworkService.swift; sourceTree = "<group>"; };
 		5090F06D276FA63A001C89B6 /* ZZMoya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZMoya.swift; sourceTree = "<group>"; };
+		50A02DD42770D08D00895E7D /* String+Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Price.swift"; sourceTree = "<group>"; };
+		50A02DD62770DEFB00895E7D /* testString+Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "testString+Price.swift"; sourceTree = "<group>"; };
 		50A915AD276F827B00C4EF61 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A915B0276F827B00C4EF61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50A915B2276F827B00C4EF61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		50C44D9327701F9700C211BA /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		50C44D9527702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+ConnectivityError.swift"; sourceTree = "<group>"; };
 		50C44D9927705CD900C211BA /* ZZLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZLog.swift; sourceTree = "<group>"; };
+		50C44D9B27707D9A00C211BA /* ZZDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZDetailCell.swift; sourceTree = "<group>"; };
 		68BC4C63E316D172A4388E26 /* Pods_test_testUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_testUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A746651F698BD823CC6C5D /* Pods_testTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F89B741169C59F5A021221E /* Pods-test-testUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-testUITests.release.xcconfig"; path = "Target Support Files/Pods-test-testUITests/Pods-test-testUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				50A915C7276F827C00C4EF61 /* testTests.swift */,
+				50A02DD62770DEFB00895E7D /* testString+Price.swift */,
 			);
 			path = testTests;
 			sourceTree = "<group>";
@@ -284,6 +291,7 @@
 			children = (
 				50C44D9227701F8700C211BA /* Errors */,
 				50A915EA276F85BD00C4EF61 /* ZZFont.h */,
+				50A02DD42770D08D00895E7D /* String+Price.swift */,
 				50A915EB276F85BD00C4EF61 /* ZZRoot.swift */,
 				50A915EC276F85BD00C4EF61 /* ZZMagicalDoor.h */,
 				50A915ED276F85BD00C4EF61 /* ZZMutable.swift */,
@@ -311,6 +319,7 @@
 			children = (
 				50A91616276F87BE00C4EF61 /* ZZDetailTableViewCell.swift */,
 				50A91617276F87BE00C4EF61 /* ZZDetailTableViewCell.xib */,
+				50C44D9B27707D9A00C211BA /* ZZDetailCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -596,6 +605,7 @@
 				5090F06C276FA4E0001C89B6 /* ZZDetailNetworkService.swift in Sources */,
 				50A91605276F85BE00C4EF61 /* ZZDisposeBag.swift in Sources */,
 				50A91602276F85BE00C4EF61 /* ZZSingleton.swift in Sources */,
+				50C44D9C27707D9A00C211BA /* ZZDetailCell.swift in Sources */,
 				50A915B3276F827B00C4EF61 /* SceneDelegate.swift in Sources */,
 				50C44D9A27705CD900C211BA /* ZZLog.swift in Sources */,
 				50A915FE276F85BE00C4EF61 /* ZZAspect.swift in Sources */,
@@ -604,6 +614,7 @@
 				50A9161F276F88E500C4EF61 /* CarroAppConfiguration.swift in Sources */,
 				50A9161B276F88B400C4EF61 /* CarroFont.swift in Sources */,
 				50C44D9627702A4800C211BA /* PrimitiveSequence+ConnectivityError.swift in Sources */,
+				50A02DD52770D08D00895E7D /* String+Price.swift in Sources */,
 				50A9160E276F868500C4EF61 /* ZZDetailTableViewHeader.swift in Sources */,
 				50A915FB276F85BE00C4EF61 /* ZZRoot.swift in Sources */,
 				50A915E8276F83DF00C4EF61 /* ZZDetailViewController.swift in Sources */,
@@ -614,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A02DD72770DEFB00895E7D /* testString+Price.swift in Sources */,
 				50A915C8276F827C00C4EF61 /* testTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

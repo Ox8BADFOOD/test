@@ -132,11 +132,13 @@ class ZZCarInfoView: UIView {
         let l = UILabel()
         l.font = DetailFont
         l.textColor = textColorLight
+        l.textAlignment = .center
         l.ZZYogaLayout {
             $0.marginTop = YGValue(15)
             $0.marginBottom = YGValue(20)
+            $0.alignSelf = .stretch
         }
-        l.text = "last update 31/04/2020"
+        l.text = " "
         return l
     }()
     

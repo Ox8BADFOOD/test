@@ -9,8 +9,10 @@
 import UIKit
 import YogaKit
 import SwiftyJSON
+import RxSwift
+import RxCocoa
 
-private let cellID = "ZZDetailTableViewCell"
+private let cellID = "ZZDetailCell"
 
 enum Country {
     case Singapore
@@ -22,11 +24,13 @@ class ZZDetailViewController: UIViewController {
     lazy var headView = ZZDetailTableViewHeader()
     lazy var footView = ZZDetailTableViewFooter()
     lazy var tableView: UITableView = UITableView.init(frame: .zero, style: .plain)
-    lazy var model: ZZDetailControllerModel = ZZDetailControllerModel()
+    lazy var model: ZZDetailControllerModel = ZZDetailControllerModel(country: country)
+    private(set) var country: Country!
     /// 创建详情控制器
     /// - Parameter country: 国家枚举类型
     init(country: Country) {
         super.init(nibName: nil, bundle: nil)
+        self.country = country
     }
     
     required init?(coder: NSCoder) {
@@ -36,10 +40,40 @@ class ZZDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ui()
-        model.network.subscribe { data in
-            ZZLog(data)
-        } onError: { err in
-            print((err as? ApiError)?.message ?? err)
+        
+        model.network.observeOn(MainScheduler.instance).subscribe {[weak self] model in
+            ZZLog(model)
+            guard let sf = self else {return}
+            if let _model = model.data {
+                //car
+                sf.headView.carNameLabel.text = _model.model
+                sf.headView.carNoLable.text = _model.carplateNumber
+
+                let leftDay = _model.daysLeft ?? 0
+                let totalDay = _model.totalDays
+                sf.headView.leftDayLabel.text = "\(leftDay) days left"
+                sf.headView.leftDayLabel.yoga.markDirty()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    guard totalDay != 0 else {return}
+                    let progress = Float(leftDay)/Float(totalDay)
+                    sf.headView.progress.setProgress(progress, animated: true)
+                }
+                //info
+                sf.headView.infoView.kmView.valueLabel.text = "\(_model.mileage ?? 0)"
+                sf.headView.infoView.usageView.valueLabel.text = "\(_model.usageDueThisMonth ?? 0)"
+                sf.headView.infoView.lastUpdateLabel.text = _model.updatedAtString
+                sf.headView.setNeedsLayout()
+                
+                sf.tableView.reloadData()
+            } else {
+
+            }
+        } onError: {err in
+            guard let error = err as? ApiError else {
+                print(err.localizedDescription)
+                return
+            }
+            print(error.message)
         }.disposed(by: zz_disposeBag)
 
     }
@@ -50,6 +84,15 @@ class ZZDetailViewController: UIViewController {
             $0.paddingHorizontal = YGValue(36)
         }
         
+        self.footView.customInsuranceBtn.yoga.display = self.country == .Thailand ? .none : .flex
+        self.footView.mngSubscriptionView.itemArr.first { itemView in
+            itemView.textLable.text == "View Docs"
+        }?.yoga.display = self.country == .Thailand ? .none : .flex
+        
+        self.footView.yoga.markDirty()
+        self.footView.setNeedsLayout()
+        
+        
         tableView.mutate { t in
             t.separatorStyle = .none
             t.delegate = self
@@ -58,6 +101,8 @@ class ZZDetailViewController: UIViewController {
             t.register(UINib.init(nibName: "ZZDetailTableViewCell", bundle: nil), forCellReuseIdentifier: cellID)
             t.tableHeaderView = headView
             t.tableFooterView = footView
+            t.rowHeight = UITableView.automaticDimension
+            t.estimatedRowHeight = 50
         }
         tableView.ZZYogaLayout {
             $0.flex = 1
@@ -65,23 +110,26 @@ class ZZDetailViewController: UIViewController {
         
         root.addSubview(tableView)
         root.yoga.applyLayout(preservingOrigin: true)
+        
     }
 }
 
 extension ZZDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+       
+        return model.tableTupleArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ZZDetailTableViewCell
         cell.divider.isHidden = indexPath.row == tableView.numberOfRows(inSection: 0) - 1
+        guard indexPath.row < model.tableTupleArr.count else {return cell}
+        let model = model.tableTupleArr[indexPath.row]
+        cell.titleLab.text = model.0
+        cell.detailLab.text = model.1
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
 }
 
 extension ZZDetailViewController: UITableViewDelegate{
