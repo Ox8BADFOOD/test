@@ -49,7 +49,7 @@ class ZZDetailViewController: UIViewController {
             
             ZZLog(model)
             guard let sf = self else {return}
-            if let _model = model.data {
+            if let _model = model.data ,model.success?.message.lowercased().contains("success") ?? false{
                 //car
                 sf.headView.carNameLabel.text = _model.model
                 sf.headView.carNoLable.text = _model.carplateNumber
@@ -71,14 +71,19 @@ class ZZDetailViewController: UIViewController {
                 
                 sf.tableView.reloadData()
             } else {
-
+                SVProgressHUD.showError(withStatus: ApiError.serverInnerError(nil).message)
+                SVProgressHUD.dismiss(withDelay: 2)
             }
         } onError: {err in
             guard let error = err as? ApiError else {
-                print(err.localizedDescription)
+//                print(err.localizedDescription)
+                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                SVProgressHUD.dismiss(withDelay: 2)
                 return
             }
-            print(error.message)
+//            print(error.message)
+            SVProgressHUD.showError(withStatus: error.message)
+            SVProgressHUD.dismiss(withDelay: 2)
         }.disposed(by: zz_disposeBag)
 
     }
